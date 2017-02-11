@@ -26,12 +26,12 @@ cd vim
     --with-features=huge      \
     --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu
 
-make VIMRUNTIMEDIR=/usr/share/vim/vim74
+make VIMRUNTIMEDIR=/usr/share/vim/vim80
 
 sudo apt-get install checkinstall
 sudo checkinstall
 
-cd ..
-sudo mkdir /usr/share/vim
-sudo mkdir /usr/share/vim/vim74
-sudo cp -fr runtime/* /usr/share/vim/vim74/
+#cd ..
+#sudo mkdir /usr/share/vim
+#sudo mkdir /usr/share/vim/vim80
+#sudo cp -fr runtime/* /usr/share/vim/vim80
