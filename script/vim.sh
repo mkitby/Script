@@ -29,7 +29,7 @@ cd vim
 make VIMRUNTIMEDIR=/usr/share/vim/vim80
 
 sudo apt-get install checkinstall
-sudo checkinstall
+sudo checkinstall -y
 
 #cd ..
 #sudo mkdir /usr/share/vim
