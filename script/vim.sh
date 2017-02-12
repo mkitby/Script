@@ -1,5 +1,6 @@
 # Remove previous installations
-sudo apt-get remove vim vim-runtime vim-tiny vim-common
+sudo apt-get purge vim vim-runtime vim-tiny vim-common
+sudo dpkg -r vim
 
 # Install dependencies
 sudo apt-get install libncurses5-dev python-dev libperl-dev ruby-dev liblua5.2-dev -y
