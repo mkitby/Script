@@ -1,0 +1,123 @@
+{
+   // See https://go.microsoft.com/fwlink/?LinkId=733558
+   // for the documentation about the tasks.json format
+   "version": "2.0.0",
+   "tasks": [
+      {
+         "type": "shell",
+         "label": "build",
+         "command": ".\\build.bat",
+         "windows": {
+            "command": ".\\build.bat"
+         },
+         "group": {
+            "kind": "build",
+            "isDefault": true
+         },
+         "problemMatcher": [
+            // diagnostic message format for iar-cc:
+            //    filename,linenumber level[tag]: message
+            {
+               "owner": "cpp",
+               "fileLocation": "absolute",
+               "pattern": {
+                  // Add --no_wrap_diagnostics option to IAR compiler flag.
+                  // By default, long lines in IAR compiler diagnostic messages are
+                  // broken into several lines to make the message easier to read.
+                  // Use this option to disable line wrapping of diagnostic messages.
+                  // Example to match:
+                  //    "d:\test\helloWorld.c",646  Warning[Pe223]: function "printf" declared implicitly
+                  "regexp": "^\"(.+?)\",(\\d+)\\s+((.*)\\[.*\\]:\\s+.*)$",
+                  // The first match group matches the file name which is relative.
+                  "file"    : 1,
+                  // The second match group matches the line on which the problem occurred.
+                  "location": 2,
+                  // The third match group matches the message
+                  "message" : 3,
+                  // The fourth match group matches the problem's severity. Can
+                  // be ignored. Then all problems are captured as errors.
+                  "severity": 4
+               }
+            },
+
+            // diagnostic message format for iar-linker:
+            //    level[tag]: message
+            {
+               "owner": "cpp",
+               "fileLocation": "absolute",
+               "pattern": {
+                  // Add --no_wrap_diagnostics option to IAR linker flag.
+                  // By default, long lines in IAR linker diagnostic messages are
+                  // broken into several lines to make the message easier to read.
+                  // Use this option to disable line wrapping of diagnostic messages.
+                  // Example to match:
+                  //    Error[Li005]: no definition for "printf" [referenced from d:\test\helloWorld.c.obj]
+                  "regexp": "^((.*)\\[.*\\]:.*\\[referenced from (.*)\\])$",
+                  "file": 3,
+                  "message": 1,
+                  "severity": 2,
+                  "kind": "file"
+               }
+            }
+         ]
+      },
+      {
+         "type": "shell",
+         "label": "rebuild",
+         "command": ".\\rebuild.bat",
+         "windows": {
+            "command": ".\\rebuild.bat"
+         },
+         "group": {
+            "kind": "build",
+            "isDefault": true
+         },
+         "problemMatcher": [
+            // diagnostic message format for iar-cc:
+            //    filename,linenumber level[tag]: message
+            {
+               "owner": "cpp",
+               "fileLocation": "absolute",
+               "pattern": {
+                  // Add --no_wrap_diagnostics option to IAR compiler flag.
+                  // By default, long lines in IAR compiler diagnostic messages are
+                  // broken into several lines to make the message easier to read.
+                  // Use this option to disable line wrapping of diagnostic messages.
+                  // Example to match:
+                  //    "d:\test\helloWorld.c",646  Warning[Pe223]: function "printf" declared implicitly
+                  "regexp": "^\"(.+?)\",(\\d+)\\s+((.*)\\[.*\\]:\\s+.*)$",
+                  // The first match group matches the file name which is relative.
+                  "file"    : 1,
+                  // The second match group matches the line on which the problem occurred.
+                  "location": 2,
+                  // The third match group matches the message
+                  "message" : 3,
+                  // The fourth match group matches the problem's severity. Can
+                  // be ignored. Then all problems are captured as errors.
+                  "severity": 4
+               }
+            },
+
+            // diagnostic message format for iar-linker:
+            //    level[tag]: message
+            {
+               "owner": "cpp",
+               "fileLocation": "absolute",
+               "pattern": {
+                  // Add --no_wrap_diagnostics option to IAR linker flag.
+                  // By default, long lines in IAR linker diagnostic messages are
+                  // broken into several lines to make the message easier to read.
+                  // Use this option to disable line wrapping of diagnostic messages.
+                  // Example to match:
+                  //    Error[Li005]: no definition for "printf" [referenced from d:\test\helloWorld.c.obj]
+                  "regexp": "^((.*)\\[.*\\]:.*\\[referenced from (.*)\\])$",
+                  "file": 3,
+                  "message": 1,
+                  "severity": 2,
+                  "kind": "file"
+               }
+            }
+         ]
+      }
+   ]
+}
